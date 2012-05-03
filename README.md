@@ -350,3 +350,104 @@ for (_i = 0, _len = list.length; _i < _len; _i++) {
   _fn(filename);
 }
 ```
+
+Classes
+-------
+
+CoffeeScript allows you to create a prototypal inheritance chain based off a classical model. There is a lot of information about classes on the CoffeeScript site and I encourage you to [check out that section in detail](http://coffeescript.org/#classes).
+
+```coffeescript
+class Animal
+  constructor: (@name) ->
+
+  move: (meters) ->
+    alert @name + " moved #{meters}m."
+
+class Snake extends Animal
+  move: ->
+    alert "Slithering..."
+    super 5
+
+class Horse extends Animal
+  move: ->
+    alert "Galloping..."
+    super 45
+
+sam = new Snake "Sammy the Python"
+tom = new Horse "Tommy the Palomino"
+
+sam.move()
+tom.move()
+```
+
+```javascript
+var Animal, Horse, Snake, sam, tom,
+  __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
+
+Animal = (function() {
+
+  Animal.name = 'Animal';
+
+  function Animal(name) {
+    this.name = name;
+  }
+
+  Animal.prototype.move = function(meters) {
+    return alert(this.name + (" moved " + meters + "m."));
+  };
+
+  return Animal;
+
+})();
+
+Snake = (function(_super) {
+
+  __extends(Snake, _super);
+
+  Snake.name = 'Snake';
+
+  function Snake() {
+    return Snake.__super__.constructor.apply(this, arguments);
+  }
+
+  Snake.prototype.move = function() {
+    alert("Slithering...");
+    return Snake.__super__.move.call(this, 5);
+  };
+
+  return Snake;
+
+})(Animal);
+
+Horse = (function(_super) {
+
+  __extends(Horse, _super);
+
+  Horse.name = 'Horse';
+
+  function Horse() {
+    return Horse.__super__.constructor.apply(this, arguments);
+  }
+
+  Horse.prototype.move = function() {
+    alert("Galloping...");
+    return Horse.__super__.move.call(this, 45);
+  };
+
+  return Horse;
+
+})(Animal);
+
+sam = new Snake("Sammy the Python");
+
+tom = new Horse("Tommy the Palomino");
+
+sam.move();
+
+tom.move();
+```
+
+Note that a constructor that has a signature like `constructor(@thing) ->` will assign the argument passed in to `this.thing` automatically.
+
+Also note that you can access the constructor function's name via `this.constructor.name`.

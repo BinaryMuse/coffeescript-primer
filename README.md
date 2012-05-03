@@ -125,7 +125,7 @@ channel = age < 16 ? "nick" : "comedy central";
 expensive_rental_car = (18 < age && age < 25);
 ```
 
-CoffeeScript offers many aliases; one of the most common is `@` which is replaced by `this`. For a full list, check out [Operators and Aliases](http://coffeescript.org/#operators) on the CoffeeScript site.
+CoffeeScript offers many aliases; one of the most common is `@` which is replaced by `this`. Another useful pair is `in` to test for array presence, and `of` to test for JavaScript object-key presence. For a full list, check out [Operators and Aliases](http://coffeescript.org/#operators) on the CoffeeScript site.
 
 The Existential Operator
 ------------------------

@@ -127,6 +127,39 @@ expensive_rental_car = (18 < age && age < 25);
 
 CoffeeScript offers many aliases; one of the most common is `@` which is replaced by `this`. Another useful pair is `in` to test for array presence, and `of` to test for JavaScript object-key presence. For a full list, check out [Operators and Aliases](http://coffeescript.org/#operators) on the CoffeeScript site.
 
+```coffeescript
+@el = $('.element')
+
+arr = [4, 8, 10, 13, 15]
+alert 'found' if 10 in arr
+
+obj = a: 1, b: 2, c: 3
+alert obj.b if 'b' of obj
+```
+
+```javascript
+var arr, obj,
+  __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+
+this.el = $('.element');
+
+arr = [4, 8, 10, 13, 15];
+
+if (__indexOf.call(arr, 10) >= 0) {
+  alert('found');
+}
+
+obj = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+if ('b' in obj) {
+  alert(obj.b);
+}
+```
+
 The Existential Operator
 ------------------------
 

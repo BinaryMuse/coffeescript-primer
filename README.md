@@ -225,7 +225,7 @@ alert(name);
 EventEmitter = require('events').EventEmitter;
 ```
 
-As an aside, note you can leave out commas when defining an object literal.
+As an aside, note you can leave out curly braces and commas when defining an object literal.
 
 Loops and Comprehensions
 ------------------------
@@ -351,8 +351,8 @@ for (_i = 0, _len = list.length; _i < _len; _i++) {
 }
 ```
 
-Classes
--------
+Classes and Prototypes
+----------------------
 
 CoffeeScript allows you to create a prototypal inheritance chain based off a classical model. There is a lot of information about classes on the CoffeeScript site and I encourage you to [check out that section in detail](http://coffeescript.org/#classes).
 
@@ -450,4 +450,17 @@ tom.move();
 
 Note that a constructor that has a signature like `constructor(@thing) ->` will assign the argument passed in to `this.thing` automatically.
 
-Also note that you can access the constructor function's name via `this.constructor.name`.
+Also note that you can access the constructor function via `this.constructor`, and that CoffeeScript assigns it a name at `this.constructor.name` that makes debugging easier.
+
+CoffeeScript allows you to access an object's prototype with the `::` operator:
+
+```coffeescript
+String::dasherize = ->
+  this.replace /_/g, "-"
+```
+
+```javascript
+String.prototype.dasherize = function() {
+  return this.replace(/_/g, "-");
+};
+```
